@@ -121,4 +121,21 @@ See:
 
 ## Current status
 
-Repository foundation and Dataset v1 specification. The next action is source reconnaissance against the two real local JSON files before implementing the final parser.
+Milestones 0–1 complete: the real source structure is manifested, both snapshots have
+bounded-memory source Parquets, and duplicate identity, dimensions, palette/visual quality,
+rights and DA/EN disagreements are audited. Canonical artwork generation is next; visual feature
+extraction has not started.
+
+Audit results are documented in:
+
+- [`docs/DUPLICATE_AUDIT.md`](docs/DUPLICATE_AUDIT.md)
+- [`docs/DIMENSIONS.md`](docs/DIMENSIONS.md)
+- [`docs/SOURCE_DISAGREEMENTS.md`](docs/SOURCE_DISAGREEMENTS.md)
+- [`docs/PALETTE_VISUAL_AUDIT.md`](docs/PALETTE_VISUAL_AUDIT.md)
+- [`docs/RIGHTS_AUDIT.md`](docs/RIGHTS_AUDIT.md)
+
+Run the audited ingest with:
+
+```bash
+smk milestone1
+```

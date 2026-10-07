@@ -87,3 +87,16 @@ The public API and enrichment API are secondary sources in v1. Use them for:
 Do not make tens of thousands of live requests merely to recreate data already present in the snapshots.
 
 SMK states that its full JSON dataset download is updated nightly. Therefore every local dump is a time-specific snapshot; reproducibility depends on hashing and manifesting the exact files used.
+
+## Milestone 1 source artifacts
+
+The bounded-memory Python ingest uses `ijson.items(stream, "item")` and writes:
+
+- `data/interim/source_da.parquet` — 202,728 rows;
+- `data/interim/source_en.parquet` — 203,023 rows.
+
+Every row preserves the complete parsed source record plus stable row identity and manifest/file
+hash provenance. Generated audit Parquets cover duplicate object numbers, dimension vocabulary and
+DA/EN source disagreements. See `DUPLICATE_AUDIT.md`, `DIMENSIONS.md` and
+`SOURCE_DISAGREEMENTS.md`. Palette/visual quality and rights are summarized in
+`PALETTE_VISUAL_AUDIT.md` and `RIGHTS_AUDIT.md`.

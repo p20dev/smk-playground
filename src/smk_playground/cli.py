@@ -19,5 +19,14 @@ def status() -> None:
         typer.echo(f"{'FOUND' if path.exists() else 'MISSING'}  {path}")
 
 
+@app.command("milestone1")
+def milestone1(root: Path | None = None) -> None:
+    """Build manifest-bound source Parquets and Milestone 1 audits."""
+    from smk_playground.ingest.milestone1 import run
+
+    summary = run((root or Path.cwd()).resolve())
+    typer.echo(f"Milestone 1 complete: {summary['source_rows']}")
+
+
 if __name__ == "__main__":
     app()

@@ -57,6 +57,12 @@ Before writing the final record parser:
 - report duplicates/missing IDs,
 - create `source-manifest.json`.
 
+## Stage 1 — audited source ingest
+
+Milestone 1 streams `$[]` with `ijson`, rejects source-ID collisions, preserves every source row in
+manifest-bound Parquet and produces duplicate, dimension and language-disagreement audits. It does
+not yet collapse duplicate `object_number` groups or produce canonical artwork rows.
+
 ## Ingest performance rule
 
 The source files are large. Use bounded-memory streaming where practical. A one-time conversion to Parquet/Arrow as an interim representation is encouraged if it simplifies all later stages.

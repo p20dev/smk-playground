@@ -1,0 +1,4 @@
+[
+  {"id":"1_object","object_number":"A1","dimensions":[{"part":"Netto","type":"højde","unit":"millimeter","value":"10"}],"colortemp":1.5},
+  {"id":"2_object","object_number":"A1","dimensions":[{"part":"Netto","type":"width","unit":"mm","value":"bad"}],"colortemp":"2.5"}
+]

@@ -26,6 +26,11 @@ Done when we understand the actual dumps well enough to implement the parser fro
 
 Done when a representative fixture/sample becomes deterministic canonical rows.
 
+Status: source loading and pre-canonical audits complete. Stable source-row identity, lossless
+logical Parquet, duplicate taxonomy, dimension vocabulary, palette/visual quality and DA/EN
+precedence recommendations are documented. Canonical artwork generation remains blocked on an
+explicit duplicate-group resolution policy and is intentionally not performed in this milestone.
+
 ## Milestone 2 — Weighted palette + colour conversion
 
 - locate ordinary/weighted palette fields in the actual snapshot/enrichment data

@@ -164,6 +164,9 @@ Parquet is the portable source of truth for derived tabular output. DuckDB may p
 - Do not run duplicate visual feature extraction just because both language snapshots contain the same artwork.
 - If language-independent values disagree, preserve provenance and report/resolve via an explicit deterministic rule.
 - Missing one language must not automatically discard an otherwise valid artwork.
+- Use `smk:<language>:<id>` as source-row identity for the audited snapshots. Never use array
+  position. Treat duplicate source-row IDs as errors and repeated `object_number` values as
+  unresolved groups until an explicit canonical rule handles them.
 
 ## Canonical artwork rules
 

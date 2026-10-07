@@ -60,9 +60,33 @@ Corpus-wide counts, missingness, exclusions, warnings and distribution diagnosti
 
 ## Identity
 
-Prefer `object_number` as the stable artwork key where present. Detect and report missing/duplicate IDs before silently deduplicating.
+`object_number` is an artwork-facing identity but is not a source-row key: 305 DA and 306 EN
+groups contain more than one record. SMK's top-level `id` is present and unique for every row in
+each audited snapshot (202,728 DA; 203,023 EN).
+
+Source rows therefore use:
+
+```text
+source_row_id = "smk:" + source_language + ":" + id
+```
+
+The language prefix distinguishes the DA and EN representations of the same SMK source record.
+If `id` is absent in a future source, use a deterministic SHA-256 of language + stable source
+content and report the fallback. Array index is never permanent identity. A duplicate
+`source_row_id` is a hard ingest error.
+
+Keep `smk_source_id`, `object_number`, language, source-file hash and logical record hash alongside
+the internal ID. Canonical artwork identity is deliberately deferred until duplicate groups have
+an explicit resolution; it must not silently equate every repeated `object_number` row.
 
 If duplicate IDs exist, inspect them and implement an explicit deterministic policy with provenance; do not keep an arbitrary “first row”.
+
+## Manifest-bound source Parquet
+
+`source_da.parquet` and `source_en.parquet` contain one row per source row, including selected typed
+columns, audit JSON columns and `source_record_json`, which preserves the complete parsed record.
+This is logical JSON preservation, not original byte-layout preservation. Parquet metadata records
+the source-file and source-manifest SHA-256 values.
 
 ## Null semantics
 
