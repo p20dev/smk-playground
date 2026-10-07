@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large SMK source snapshots: NEVER commit these.
+data/raw/*
+!data/raw/README.md
+
+# Generated analytical data: reproducible, local artifacts.
+data/interim/*
+data/processed/*
+data/reports/*
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/reports/.gitkeep
+
+# Local analytical databases / caches
+*.duckdb
+*.duckdb.wal
+*.db
+.cache/
+
+# Generated columnar/export formats
+*.parquet
+*.arrow
+*.feather
+
+# Logs / temporary files
+*.log
+*.tmp
+*.temp
