@@ -81,13 +81,11 @@ resumable append-only source cache, weighted palettes/features v2, bulk/enrichme
 an exact palette-transport similarity profile. See `ENRICHMENT_V1.md`, `WEIGHTED_PALETTES_V1.md`
 and `WEIGHTED_SIMILARITY_V1.md`.
 
-## Milestone 7 — Full dataset build
+## Milestone 7 — First usable application + sonification
 
-Run the complete local source snapshots.
-
-Definition of done:
-
-Every canonical artwork has valid applicable features or explicit nulls/flags explaining missing/invalid prerequisites. Every normalization result references a frozen profile and exact source manifest.
+Status: complete. A compact read-only web catalog feeds one FastAPI + React service with search,
+artwork detail, existing exact similarity profiles, explicit cached weighted similarity, and three
+versioned deterministic browser-audio mappings. See `SONIFICATION_V1.md` and `WEB_UI_V1.md`.
 
 ## Milestone 8 — Similarity
 

@@ -12,6 +12,8 @@ venv/
 dist/
 build/
 *.egg-info/
+node_modules/
+*.tsbuildinfo
 
 # Environment / secrets
 .env
@@ -41,6 +43,8 @@ data/reports/*
 *.duckdb.wal
 *.db
 .cache/
+data/cache/*
+!data/cache/.gitkeep
 
 # Generated columnar/export formats
 *.parquet

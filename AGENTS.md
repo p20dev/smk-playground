@@ -49,6 +49,11 @@ Milestone 6 keeps enrichment as a separate append-only source/cache. Weighted pa
 must never overwrite bulk uniform v1. Corpus membership remains unchanged when enrichment is
 missing. Palette transport uses exact OKLab min-cost flow, and weighted similarity is a new profile.
 
+Milestone 7 serves the frozen analytical artifacts through one FastAPI + React application.
+Processed data is read-only at runtime. Browser audio is user-triggered and uses versioned,
+deterministic sonification mappings. Weighted similarity is an explicit deep action and may write
+only profile-hash-keyed results under `data/cache/`.
+
 Never overwrite source data. Never silently invent missing values.
 
 ## Primary bulk source
@@ -397,7 +402,8 @@ Use fast feature-vector candidate retrieval, then optionally rerank top candidat
 
 Sonification is a separate mapping layer, never an objective artwork feature.
 
-Initial profile: `art-tone-v1`.
+Initial profile set: `weighted-color-tone-v1`, `physical-artwork-tone-v1`, and
+`palette-arpeggio-v1`.
 
 Tentative mapping:
 

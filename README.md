@@ -2,7 +2,9 @@
 
 A small, reproducible analysis pipeline for visual and colour features in artworks from **Statens Museum for Kunst (SMK)**.
 
-The first goal is deliberately not a web app. The goal is to turn the locally downloaded SMK dataset into a trustworthy, versioned analytical foundation that can be reused for colour search, similarity, clustering, timelines, mosaics, visual experiments and data sonification.
+The project first established a trustworthy, versioned analytical foundation from the locally
+downloaded SMK dataset. It now includes a small exploratory web application for colour search,
+similarity, weighted palettes, and deterministic data sonification.
 
 ## Local source files
 
@@ -121,14 +123,16 @@ See:
 
 ## Current status
 
-Milestones 0–6 complete: source structure and audits are manifested, the language snapshots have
+Milestones 0–7 complete: source structure and audits are manifested, the language snapshots have
 bounded-memory source Parquets, DA/EN rows are paired into stable SMK entities, and the exact
 `smk-public-visual-v1` membership rule is frozen. Deterministic raw visual features and analytical
 palettes now exist. Versioned corpus statistics, normalized scalar features and three unweighted
 candidate feature families are materialized. Three deterministic, explainable exact-distance
 profiles now support color, visual-character and specialist geometry queries; ANN is not used.
 Separately cached SMK enrichment responses add weighted palettes, v2 weighted features and an
-exact palette-transport similarity profile without mutating the bulk-derived v1 artifacts.
+exact palette-transport similarity profile without mutating the bulk-derived v1 artifacts. A
+single-service FastAPI + React application now exposes those frozen artifacts, explicit deep
+weighted similarity, and deterministic browser sonification.
 
 Audit results are documented in:
 
@@ -148,6 +152,8 @@ Audit results are documented in:
 - [`docs/ENRICHMENT_V1.md`](docs/ENRICHMENT_V1.md)
 - [`docs/WEIGHTED_PALETTES_V1.md`](docs/WEIGHTED_PALETTES_V1.md)
 - [`docs/WEIGHTED_SIMILARITY_V1.md`](docs/WEIGHTED_SIMILARITY_V1.md)
+- [`docs/SONIFICATION_V1.md`](docs/SONIFICATION_V1.md)
+- [`docs/WEB_UI_V1.md`](docs/WEB_UI_V1.md)
 
 Run the audited ingest with:
 
@@ -160,4 +166,24 @@ smk milestone5
 smk similar KMS8892 --profile color --limit 10
 smk enrichment status
 smk similar KMS8892 --profile weighted-color --limit 10
+smk web-catalog
 ```
+
+## Run the application
+
+The existing Milestones 1–6 processed artifacts must be present locally. Build the compact app
+catalog once after those artifacts change:
+
+```bash
+smk web-catalog
+```
+
+Then start the single application service:
+
+```bash
+cp .env.example .env
+docker compose up --build
+```
+
+Open [http://localhost:8135](http://localhost:8135). The processed directory is mounted read-only;
+only `data/cache/` is writable. Set `HOST_PORT` in `.env` to publish another host port.

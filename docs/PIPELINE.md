@@ -26,6 +26,8 @@ select/freeze normalization corpus
 normalized features
         ↓
 similarity / sonification experiments
+        ↓
+compact web catalog + read-only application
 ```
 
 ## Recommended CLI stages
@@ -98,6 +100,14 @@ Fetch only unique frozen-corpus object numbers into an append-only resumable cac
 separate source manifest, parse repeated palette tokens into explicit weights, emit weighted
 palette/features v2, and add exact OKLab palette transport under a new similarity profile. Existing
 bulk v1 corpus, features, normalization and profiles remain byte-independent inputs.
+
+## Stage 7 — exploratory application
+
+Join only the fields needed for interactive browsing into `web-catalog-v1.parquet`, freeze the
+sonification profile manifest, and serve the built React client and FastAPI routes from one
+container. Runtime startup validates artifacts but never triggers ingestion, enrichment, or
+normalization. Processed inputs remain read-only; deep weighted-similarity responses use the
+separate invalidatable cache.
 
 ## Ingest performance rule
 

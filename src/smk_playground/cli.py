@@ -76,6 +76,15 @@ def milestone6(root: Path | None = None) -> None:
     typer.echo(f"Milestone 6 complete: {summary['weighted_palette_entity_count']} weighted entities")
 
 
+@app.command("web-catalog")
+def web_catalog(root: Path | None = None) -> None:
+    """Build the compact read-only catalog and sonification manifest for the app."""
+    from smk_playground.web_catalog.build import run
+
+    summary = run((root or Path.cwd()).resolve())
+    typer.echo(f"Web catalog complete: {summary['rows']} rows")
+
+
 @enrichment_app.command("status")
 def enrichment_status(root: Path | None = None) -> None:
     """Report resumable enrichment-cache status."""

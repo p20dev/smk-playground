@@ -1,0 +1,1 @@
+"""Compact web catalog generation."""

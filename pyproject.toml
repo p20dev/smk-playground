@@ -10,16 +10,19 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
   "duckdb>=1",
+  "fastapi>=0.115",
   "ijson>=3.3",
   "numpy>=2",
   "polars>=1",
   "pyarrow>=18",
   "typer>=0.12",
+  "uvicorn>=0.34",
 ]
 
 [project.optional-dependencies]
 dev = [
   "pytest>=8",
+  "httpx>=0.28",
   "ruff>=0.8",
 ]
 

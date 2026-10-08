@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    ports:
+      - "${HOST_PORT:-8135}:8000"
+    environment:
+      SMK_ROOT: /app
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./data/cache:/app/data/cache
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
