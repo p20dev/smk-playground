@@ -167,6 +167,10 @@ Parquet is the portable source of truth for derived tabular output. DuckDB may p
 - Use `smk:<language>:<id>` as source-row identity for the audited snapshots. Never use array
   position. Treat duplicate source-row IDs as errors and repeated `object_number` values as
   unresolved groups until an explicit canonical rule handles them.
+- Use the top-level SMK `id` without language as `smk_entity_id`. Pair DA/EN only when that ID is
+  identical. `object_number` is explicitly non-unique and group members remain separate entities.
+- Resolve image metadata as an atomic bundle; never combine image identifiers from one source with
+  pixel dimensions or URLs from the other.
 
 ## Canonical artwork rules
 

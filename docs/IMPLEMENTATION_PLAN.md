@@ -28,10 +28,22 @@ Done when a representative fixture/sample becomes deterministic canonical rows.
 
 Status: source loading and pre-canonical audits complete. Stable source-row identity, lossless
 logical Parquet, duplicate taxonomy, dimension vocabulary, palette/visual quality and DA/EN
-precedence recommendations are documented. Canonical artwork generation remains blocked on an
-explicit duplicate-group resolution policy and is intentionally not performed in this milestone.
+precedence recommendations are documented. Canonical entities are implemented in Milestone 2
+without collapsing duplicate `object_number` groups.
 
-## Milestone 2 — Weighted palette + colour conversion
+## Milestone 2 — Canonical entities + first analyzable corpus
+
+- pair language rows only by SMK `id`
+- preserve `object_number` as non-unique grouping metadata
+- canonicalize fields with explicit provenance and conflicts
+- resolve image bundles atomically
+- preserve and normalize dimension observations without choosing conflicts
+- freeze `smk-public-visual-v1` with machine-readable exclusion reasons
+
+Status: complete. See `CANONICALIZATION.md` and `CORPUS_V1.md`. Visual/colour feature extraction
+has not started.
+
+## Milestone 3 — Weighted palette + colour conversion
 
 - locate ordinary/weighted palette fields in the actual snapshot/enrichment data
 - parse `colors_palette_weighted_s` when present
@@ -41,7 +53,7 @@ explicit duplicate-group resolution policy and is intentionally not performed in
 
 Done when known palette fixtures produce stable colour rows and valid weights.
 
-## Milestone 3 — Feature extraction
+## Milestone 4 — Feature extraction
 
 Implement:
 
@@ -56,7 +68,7 @@ Implement:
 
 Done when one artwork can produce a complete feature record independently of the corpus.
 
-## Milestone 4 — Quality layer
+## Milestone 5 — Quality layer
 
 Implement documented flags and source/language/aspect checks.
 
@@ -73,18 +85,18 @@ Produce `quality-report.json` with:
 - palette-size distribution
 - obvious extreme values
 
-## Milestone 5 — Pilot build
+## Milestone 6 — Pilot build
 
 Run 100–500 representative artworks.
 
 Review distributions and manually inspect selected records. Fix parser/source/math errors only; do not artistically tune features.
 
-## Milestone 6 — Corpus definition + normalization
+## Milestone 7 — Corpus-relative normalization
 
-Do not hardcode 39,508.
+Use the frozen `smk-public-visual-v1` entity membership from Milestone 2. Do not redefine corpus
+membership from an expected count.
 
-- define the exact inclusion predicate for `smk-public-visual-v1`
-- record included/excluded counts and reasons
+- reference included/excluded counts and reasons from the frozen corpus artifact
 - compute count/null/min/max/quantiles
 - median + MAD
 - implement `robust_01`
@@ -92,7 +104,7 @@ Do not hardcode 39,508.
 - implement robust z-score
 - freeze profile with source-manifest reference
 
-## Milestone 7 — Full dataset build
+## Milestone 8 — Full dataset build
 
 Run the complete local source snapshots.
 
@@ -100,7 +112,7 @@ Definition of done:
 
 Every canonical artwork has valid applicable features or explicit nulls/flags explaining missing/invalid prerequisites. Every normalization result references a frozen profile and exact source manifest.
 
-## Milestone 8 — Similarity
+## Milestone 9 — Similarity
 
 Implement separate profiles rather than one magic similarity score:
 
@@ -110,7 +122,7 @@ Implement separate profiles rather than one magic similarity score:
 
 Use fast feature-vector candidate retrieval followed optionally by weighted-palette optimal-transport reranking. Do not precompute all pairs.
 
-## Milestone 9 — Art Tone v1
+## Milestone 10 — Art Tone v1
 
 Implement versioned, explainable sonification mapping separate from objective features.
 
@@ -126,7 +138,7 @@ Initial mapping:
 
 Emit exact inputs alongside every mapped result.
 
-## Milestone 10 — Exploration
+## Milestone 11 — Exploration
 
 Only after Dataset v1 is trustworthy, start experimental interfaces/notebooks/apps:
 

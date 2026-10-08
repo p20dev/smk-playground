@@ -63,6 +63,14 @@ Milestone 1 streams `$[]` with `ijson`, rejects source-ID collisions, preserves 
 manifest-bound Parquet and produces duplicate, dimension and language-disagreement audits. It does
 not yet collapse duplicate `object_number` groups or produce canonical artwork rows.
 
+## Stage 2 — canonical entities + corpus freeze
+
+Pair DA/EN by identical SMK `id`, preserve non-unique object-number groups, apply field-specific
+provenance/conflict rules, resolve image bundles atomically, normalize supported dimension
+observations to centimetres and write `artworks.parquet`. Freeze `smk-public-visual-v1` from
+explicit rights/image/colors criteria and emit membership reasons. Colour feature extraction is a
+later stage.
+
 ## Ingest performance rule
 
 The source files are large. Use bounded-memory streaming where practical. A one-time conversion to Parquet/Arrow as an interim representation is encouraged if it simplifies all later stages.

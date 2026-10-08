@@ -121,10 +121,9 @@ See:
 
 ## Current status
 
-Milestones 0–1 complete: the real source structure is manifested, both snapshots have
-bounded-memory source Parquets, and duplicate identity, dimensions, palette/visual quality,
-rights and DA/EN disagreements are audited. Canonical artwork generation is next; visual feature
-extraction has not started.
+Milestones 0–2 complete: source structure and audits are manifested, the language snapshots have
+bounded-memory source Parquets, DA/EN rows are paired into stable SMK entities, and the exact
+`smk-public-visual-v1` membership rule is frozen. Visual feature extraction has not started.
 
 Audit results are documented in:
 
@@ -133,9 +132,12 @@ Audit results are documented in:
 - [`docs/SOURCE_DISAGREEMENTS.md`](docs/SOURCE_DISAGREEMENTS.md)
 - [`docs/PALETTE_VISUAL_AUDIT.md`](docs/PALETTE_VISUAL_AUDIT.md)
 - [`docs/RIGHTS_AUDIT.md`](docs/RIGHTS_AUDIT.md)
+- [`docs/CANONICALIZATION.md`](docs/CANONICALIZATION.md)
+- [`docs/CORPUS_V1.md`](docs/CORPUS_V1.md)
 
 Run the audited ingest with:
 
 ```bash
 smk milestone1
+smk milestone2
 ```

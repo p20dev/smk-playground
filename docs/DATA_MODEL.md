@@ -20,7 +20,9 @@ Values calculated relative to a named, frozen corpus/profile.
 Identifies exact input snapshots by filename, size, SHA-256, observed JSON structure and record counts.
 
 ### `artworks.parquet`
-One canonical row per artwork identity.
+One canonical row per SMK entity, produced by pairing DA/EN source rows with the same top-level
+SMK `id`. It includes localized values, field-level provenance/conflict status, atomic image
+resolution, typed dimension observations/candidates, quality flags and corpus membership.
 
 Suggested fields include:
 
@@ -76,10 +78,22 @@ content and report the fallback. Array index is never permanent identity. A dupl
 `source_row_id` is a hard ingest error.
 
 Keep `smk_source_id`, `object_number`, language, source-file hash and logical record hash alongside
-the internal ID. Canonical artwork identity is deliberately deferred until duplicate groups have
-an explicit resolution; it must not silently equate every repeated `object_number` row.
+the internal ID. The canonical entity key is the language-independent top-level SMK `id`.
+Repeated `object_number` values remain separate canonical entities and are represented in
+`object-number-groups.parquet`; they are never collapsed implicitly.
 
 If duplicate IDs exist, inspect them and implement an explicit deterministic policy with provenance; do not keep an arbitrary “first row”.
+
+### Canonical identity
+
+```text
+source_row_id = smk:<language>:<SMK id>
+smk_entity_id = <SMK id>
+object_number = non-unique accession/business identifier
+```
+
+DA and EN rows pair only by identical `smk_entity_id`. A disagreement in `object_number` becomes
+an unresolved field conflict, not a cross-ID pairing rule.
 
 ## Manifest-bound source Parquet
 
@@ -99,3 +113,7 @@ Zero is a real value and must never stand in for missing data.
 Canonical ingestion and feature extraction may include records that are not eligible for `smk-public-visual-v1`.
 
 Normalization membership is a separate, explicit decision. Store inclusion/exclusion reasons rather than deleting records merely because a downstream profile cannot use them.
+
+`smk-public-visual-v1` is now frozen as an analyzable source corpus, not a normalization profile.
+Its exact predicate and counts are documented in `CORPUS_V1.md`. Later corpus-relative feature
+normalization remains independently versioned.

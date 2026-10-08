@@ -28,5 +28,14 @@ def milestone1(root: Path | None = None) -> None:
     typer.echo(f"Milestone 1 complete: {summary['source_rows']}")
 
 
+@app.command("milestone2")
+def milestone2(root: Path | None = None) -> None:
+    """Build canonical SMK entities and freeze smk-public-visual-v1."""
+    from smk_playground.canonical.milestone2 import run
+
+    summary = run((root or Path.cwd()).resolve())
+    typer.echo(f"Milestone 2 complete: {summary['canonical_entity_count']} entities")
+
+
 if __name__ == "__main__":
     app()
