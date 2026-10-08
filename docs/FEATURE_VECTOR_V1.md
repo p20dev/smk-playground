@@ -38,3 +38,6 @@ components. No family has weights, and the three families are not concatenated i
 distance space. Later comparison may combine raw OKLab distance, normalized scalar distance,
 palette-level distance and optional geometry under separately versioned similarity profiles.
 
+Milestone 5 consumes explicit scalar columns rather than treating these lists as an opaque
+universal vector. See `SIMILARITY_V1.md` for frozen component selection, scales and weights.
+

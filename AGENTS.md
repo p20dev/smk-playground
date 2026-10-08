@@ -40,6 +40,11 @@ normalized table preserves nulls, and its compact vector table contains separate
 `color_core_v1`, `visual_character_v1` and optional `geometry_v1` families. Do not treat these
 families as a similarity profile or independently normalized OKLab a/b as perceptual geometry.
 
+Milestone 5 adds versioned exact-distance profiles for color, visual character and optional
+geometry. Keep their questions separate, return component contributions, omit and renormalize
+missing optional components symmetrically, and tie-break by distance then canonical entity ID.
+Do not call distance a percentage similarity or add ANN before measured need.
+
 Never overwrite source data. Never silently invent missing values.
 
 ## Primary bulk source

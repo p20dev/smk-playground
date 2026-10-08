@@ -1,5 +1,6 @@
 """Command-line entrypoint for the SMK Playground pipeline."""
 
+import json
 from pathlib import Path
 
 import typer
@@ -53,6 +54,41 @@ def milestone4(root: Path | None = None) -> None:
 
     summary = run((root or Path.cwd()).resolve())
     typer.echo(f"Milestone 4 complete: {summary['row_count']} normalized rows")
+
+
+@app.command("milestone5")
+def milestone5(root: Path | None = None) -> None:
+    """Build exact deterministic similarity profiles and diagnostics."""
+    from smk_playground.similarity.milestone5 import run
+
+    summary = run((root or Path.cwd()).resolve())
+    typer.echo(f"Milestone 5 complete: {summary['eligible_counts']}")
+
+
+@app.command("similar")
+def similar(
+    object_number: str | None = typer.Argument(None, help="SMK object number"),
+    smk_entity_id: str | None = typer.Option(None, "--id", help="Canonical SMK entity ID"),
+    profile: str = typer.Option("color", help="color, visual, or geometry"),
+    limit: int = typer.Option(10, min=1, max=100),
+    include_self: bool = typer.Option(False, help="Include the query entity for debugging"),
+    root: Path | None = None,
+) -> None:
+    """Run an exact similarity query over the frozen corpus."""
+    from smk_playground.similarity.engine import SimilarityEngine
+
+    try:
+        query, results = SimilarityEngine((root or Path.cwd()).resolve()).search(
+            profile_name=profile, limit=limit, smk_entity_id=smk_entity_id,
+            object_number=object_number, include_self=include_self,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    typer.echo(json.dumps({
+        "query": {"smk_entity_id": query["smk_entity_id"],
+                  "object_number": query["object_number"]},
+        "profile": profile, "results": results,
+    }, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

@@ -66,6 +66,12 @@ robust-01, percentile and robust-z columns; `artwork-feature-vectors-v1.parquet`
 fixed-order candidate families. `normalization-profile-v1.json` is the authoritative definition
 and binds both outputs to the exact source-feature Parquet SHA-256.
 
+### `similarity-profiles-v1.json`
+
+Defines exact transforms, sampled-pair scales, weights, required/optional inputs, missingness rules,
+tie-breaking and bound input hashes for the three Milestone 5 profiles. Similarity results are
+computed exactly on demand and expose per-component contributions; there is no full pair matrix.
+
 ### `quality-report.json`
 Corpus-wide counts, missingness, exclusions, warnings and distribution diagnostics.
 

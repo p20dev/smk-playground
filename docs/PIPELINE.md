@@ -85,6 +85,13 @@ and emit raw plus robust-01, empirical-midrank percentile and robust-z represent
 aspect ratios and circular hue diagnostics, preserve nulls, and publish separate unweighted color,
 visual-character and optional geometry families. Similarity and final weights remain later stages.
 
+## Stage 5 — deterministic exact similarity
+
+Calibrate component scales from a fixed 500,000-pair sample, freeze separate color,
+visual-character and geometry profiles, and perform exact full-corpus ranking with explainable
+contributions. Missing optional fields renormalize shared weights; required fields determine
+eligibility. No ANN index, universal score or palette transport is introduced.
+
 ## Ingest performance rule
 
 The source files are large. Use bounded-memory streaming where practical. A one-time conversion to Parquet/Arrow as an interim representation is encouraged if it simplifies all later stages.

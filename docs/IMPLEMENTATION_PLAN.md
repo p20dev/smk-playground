@@ -69,9 +69,10 @@ aspect and circular-hue diagnostics, and publish separate unweighted candidate f
 
 ## Milestone 5 — Pilot build
 
-Run 100–500 representative artworks.
-
-Review distributions and manually inspect selected records. Fix parser/source/math errors only; do not artistically tune features.
+Status: complete as deterministic exact similarity. Three separately versioned profiles use
+sample-calibrated component scales, explicit weights, shared-component missingness and explainable
+contributions. QA examples, stability diagnostics and performance measurements are published in
+`SIMILARITY_V1.md` and `SIMILARITY_EXAMPLES.md`.
 
 ## Milestone 6 — Similarity preparation
 

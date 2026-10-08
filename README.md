@@ -121,11 +121,12 @@ See:
 
 ## Current status
 
-Milestones 0–4 complete: source structure and audits are manifested, the language snapshots have
+Milestones 0–5 complete: source structure and audits are manifested, the language snapshots have
 bounded-memory source Parquets, DA/EN rows are paired into stable SMK entities, and the exact
 `smk-public-visual-v1` membership rule is frozen. Deterministic raw visual features and analytical
 palettes now exist. Versioned corpus statistics, normalized scalar features and three unweighted
-candidate feature families are materialized. Similarity has not started.
+candidate feature families are materialized. Three deterministic, explainable exact-distance
+profiles now support color, visual-character and specialist geometry queries; ANN is not used.
 
 Audit results are documented in:
 
@@ -140,6 +141,8 @@ Audit results are documented in:
 - [`docs/FEATURE_EXAMPLES.md`](docs/FEATURE_EXAMPLES.md)
 - [`docs/NORMALIZATION_V1.md`](docs/NORMALIZATION_V1.md)
 - [`docs/FEATURE_VECTOR_V1.md`](docs/FEATURE_VECTOR_V1.md)
+- [`docs/SIMILARITY_V1.md`](docs/SIMILARITY_V1.md)
+- [`docs/SIMILARITY_EXAMPLES.md`](docs/SIMILARITY_EXAMPLES.md)
 
 Run the audited ingest with:
 
@@ -148,4 +151,6 @@ smk milestone1
 smk milestone2
 smk milestone3
 smk milestone4
+smk milestone5
+smk similar KMS8892 --profile color --limit 10
 ```
