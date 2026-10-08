@@ -6,7 +6,10 @@ Per-artwork feature extraction is deterministic and corpus-independent. Running 
 
 ## Palette input
 
-Prefer an explicit SMK weighted palette when valid. Preserve the source representation.
+Milestone 3 uses canonical SMK bulk `colors` and preserves source representation and order. The
+bulk snapshots have no documented weights, so v1 uses explicitly labelled uniform analytical
+weights (`1/n`) after deduplicating exact repeated hex values. Repetition is not interpreted as
+weight.
 
 For `colors_palette_weighted_s`, the observed format may contain repeated space-separated hex tokens. Parse defensively:
 
@@ -16,7 +19,8 @@ For `colors_palette_weighted_s`, the observed format may contain repeated space-
 4. retain an explicit `weight_source`,
 5. quality-flag malformed/partial input.
 
-If weights are unavailable, do not label equal/fallback weights as original SMK weights. A fallback can be supported if explicitly identified.
+Uniform v1 weights are `palette_weighting = "uniform"`, never original SMK weights. Future
+enrichment weights must retain separate provenance.
 
 Canonical weights must satisfy approximately:
 
@@ -52,15 +56,13 @@ Store:
 - `centroid_b`
 - `centroid_chroma`
 - `centroid_hue_deg`
-- `centroid_hue_x`
-- `centroid_hue_y`
 
 Convert the centroid to OKLCH for chroma/hue. Hue is undefined for sufficiently achromatic centroids; use null rather than inventing a direction.
 
 ## Palette statistics
 
-### `dominant_color_weight`
-Largest normalized palette weight.
+There is no `dominant_color_weight` in v1 because uniform weights do not measure image dominance.
+The first source colour and preserved source order are available without claiming dominance.
 
 ### `palette_entropy_01`
 Normalized Shannon entropy:
@@ -80,7 +82,7 @@ exp(H)
 
 using unnormalized natural-log entropy.
 
-### `palette_spread`
+### `palette_spread_oklab`
 Weighted mean Euclidean OKLab distance from palette colours to the weighted centroid.
 
 ### `lightness_stddev`
@@ -114,17 +116,16 @@ If multiple enrichment components/versions provide competing values, retain prov
 
 ## Geometry
 
-Canonical geometry/features:
+Canonical feature geometry:
 
-- `physical_width_cm`
-- `physical_height_cm`
-- `physical_depth_cm`
-- `physical_area_cm2`
-- `physical_aspect_ratio`
+- `net_width_cm`
+- `net_height_cm`
+- `net_area_cm2`
+- `net_aspect_ratio`
 - `image_aspect_ratio`
-- `log_width_cm`
-- `log_height_cm`
-- `log_area_cm2`
+- `log_net_width_cm`
+- `log_net_height_cm`
+- `log_net_area_cm2`
 
 Rules:
 

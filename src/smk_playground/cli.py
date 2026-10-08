@@ -37,5 +37,14 @@ def milestone2(root: Path | None = None) -> None:
     typer.echo(f"Milestone 2 complete: {summary['canonical_entity_count']} entities")
 
 
+@app.command("milestone3")
+def milestone3(root: Path | None = None) -> None:
+    """Build deterministic per-artwork visual features for the frozen corpus."""
+    from smk_playground.features.milestone3 import run
+
+    summary = run((root or Path.cwd()).resolve())
+    typer.echo(f"Milestone 3 complete: {summary['feature_rows']} feature rows")
+
+
 if __name__ == "__main__":
     app()

@@ -54,6 +54,10 @@ Suggested fields:
 ### `features.parquet`
 One row per artwork with Feature Specification v1 values and quality flags.
 
+Milestone 3 materializes this as `artwork-visual-features-v1.parquet`, keyed by `smk_entity_id`,
+and writes `artwork-palettes-v1.parquet` as one typed row per analytical palette colour. Both are
+bound to exact canonical/corpus SHA-256 values and extractor/schema versions.
+
 ### `normalized-features.parquet`
 One row per artwork per normalization profile/version, or a wide equivalent if simpler to query.
 

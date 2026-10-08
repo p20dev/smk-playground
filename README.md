@@ -121,9 +121,10 @@ See:
 
 ## Current status
 
-Milestones 0–2 complete: source structure and audits are manifested, the language snapshots have
+Milestones 0–3 complete: source structure and audits are manifested, the language snapshots have
 bounded-memory source Parquets, DA/EN rows are paired into stable SMK entities, and the exact
-`smk-public-visual-v1` membership rule is frozen. Visual feature extraction has not started.
+`smk-public-visual-v1` membership rule is frozen. Deterministic raw visual features and analytical
+palettes now exist; corpus-wide feature normalization and similarity have not started.
 
 Audit results are documented in:
 
@@ -134,10 +135,13 @@ Audit results are documented in:
 - [`docs/RIGHTS_AUDIT.md`](docs/RIGHTS_AUDIT.md)
 - [`docs/CANONICALIZATION.md`](docs/CANONICALIZATION.md)
 - [`docs/CORPUS_V1.md`](docs/CORPUS_V1.md)
+- [`docs/FEATURE_EXTRACTION_V1.md`](docs/FEATURE_EXTRACTION_V1.md)
+- [`docs/FEATURE_EXAMPLES.md`](docs/FEATURE_EXAMPLES.md)
 
 Run the audited ingest with:
 
 ```bash
 smk milestone1
 smk milestone2
+smk milestone3
 ```

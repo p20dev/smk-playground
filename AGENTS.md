@@ -219,6 +219,10 @@ Treat this defensively. The observed enrichment representation can be a space-se
 
 If absent or malformed, record a quality flag. Never pretend equal/fallback weights are original SMK weights.
 
+For bulk-only feature schema `artart-visual-features` v1, use canonical `colors`, deduplicate exact
+repeated hex values for analysis, and label `1/n` weights explicitly as `uniform`. Preserve source
+palette/order and never claim source dominance from these weights.
+
 ## Colour space
 
 Use:
@@ -240,15 +244,12 @@ Hue is circular. Do not average hue degrees arithmetically. Aggregate colour cen
 - `centroid_b`
 - `centroid_chroma`
 - `centroid_hue_deg`
-- `centroid_hue_x = cos(h)`
-- `centroid_hue_y = sin(h)`
 
 ### Palette distribution
 
-- `dominant_color_weight`
 - `palette_entropy_01`
 - `effective_palette_size`
-- `palette_spread`
+- `palette_spread_oklab`
 - `lightness_stddev`
 - `chroma_stddev`
 - `hue_concentration_01`

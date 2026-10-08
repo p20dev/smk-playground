@@ -43,32 +43,24 @@ without collapsing duplicate `object_number` groups.
 Status: complete. See `CANONICALIZATION.md` and `CORPUS_V1.md`. Visual/colour feature extraction
 has not started.
 
-## Milestone 3 — Weighted palette + colour conversion
+## Milestone 3 — Deterministic per-artwork visual features
 
-- locate ordinary/weighted palette fields in the actual snapshot/enrichment data
-- parse `colors_palette_weighted_s` when present
-- normalize explicit weights
-- implement/verify sRGB -> OKLab -> OKLCH
-- preserve malformed input as quality warnings rather than crashing the run
-
-Done when known palette fixtures produce stable colour rows and valid weights.
-
-## Milestone 4 — Feature extraction
-
-Implement:
+Implemented for frozen `smk-public-visual-v1`:
 
 - perceptual centroid
-- palette entropy
-- effective palette size
+- explicitly uniform bulk-palette weights and duplicate-colour handling
+- sRGB -> OKLab -> OKLCH with achromatic hue semantics
+- palette entropy/effective size with documented uniform-weight limitation
 - palette spread
 - weighted lightness/chroma variation
 - hue concentration
 - SMK visual fields + provenance
 - physical/image geometry + logs
 
-Done when one artwork can produce a complete feature record independently of the corpus.
+Status: complete. Raw features remain corpus-independent; no corpus normalization or similarity is
+implemented. See `FEATURE_EXTRACTION_V1.md` and `FEATURE_EXAMPLES.md`.
 
-## Milestone 5 — Quality layer
+## Milestone 4 — Quality layer
 
 Implement documented flags and source/language/aspect checks.
 
@@ -85,13 +77,13 @@ Produce `quality-report.json` with:
 - palette-size distribution
 - obvious extreme values
 
-## Milestone 6 — Pilot build
+## Milestone 5 — Pilot build
 
 Run 100–500 representative artworks.
 
 Review distributions and manually inspect selected records. Fix parser/source/math errors only; do not artistically tune features.
 
-## Milestone 7 — Corpus-relative normalization
+## Milestone 6 — Corpus-relative normalization
 
 Use the frozen `smk-public-visual-v1` entity membership from Milestone 2. Do not redefine corpus
 membership from an expected count.
@@ -104,7 +96,7 @@ membership from an expected count.
 - implement robust z-score
 - freeze profile with source-manifest reference
 
-## Milestone 8 — Full dataset build
+## Milestone 7 — Full dataset build
 
 Run the complete local source snapshots.
 
@@ -112,7 +104,7 @@ Definition of done:
 
 Every canonical artwork has valid applicable features or explicit nulls/flags explaining missing/invalid prerequisites. Every normalization result references a frozen profile and exact source manifest.
 
-## Milestone 9 — Similarity
+## Milestone 8 — Similarity
 
 Implement separate profiles rather than one magic similarity score:
 
@@ -122,7 +114,7 @@ Implement separate profiles rather than one magic similarity score:
 
 Use fast feature-vector candidate retrieval followed optionally by weighted-palette optimal-transport reranking. Do not precompute all pairs.
 
-## Milestone 10 — Art Tone v1
+## Milestone 9 — Art Tone v1
 
 Implement versioned, explainable sonification mapping separate from objective features.
 
@@ -138,7 +130,7 @@ Initial mapping:
 
 Emit exact inputs alongside every mapped result.
 
-## Milestone 11 — Exploration
+## Milestone 10 — Exploration
 
 Only after Dataset v1 is trustworthy, start experimental interfaces/notebooks/apps:
 

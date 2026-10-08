@@ -71,6 +71,13 @@ observations to centimetres and write `artworks.parquet`. Freeze `smk-public-vis
 explicit rights/image/colors criteria and emit membership reasons. Colour feature extraction is a
 later stage.
 
+## Stage 3 — deterministic visual features
+
+For each frozen corpus entity, deduplicate exact source palette colours, assign explicitly uniform
+analytical weights, convert sRGB to OKLab/OKLCH, calculate compact palette statistics, carry source
+visual values and derive eligible geometry. Emit scalar feature and long-form palette Parquets plus
+diagnostics. Do not perform corpus-relative normalization or similarity here.
+
 ## Ingest performance rule
 
 The source files are large. Use bounded-memory streaming where practical. A one-time conversion to Parquet/Arrow as an interim representation is encouraged if it simplifies all later stages.
