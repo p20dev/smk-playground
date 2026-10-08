@@ -35,6 +35,11 @@ Treat the project as four analytical layers:
 3. `features` — deterministic per-artwork derived features. These MUST NOT depend on other artworks.
 4. `normalized` — corpus-relative values based on a named, versioned normalization profile.
 
+Milestone 4 freezes normalization profile `smk-public-visual-v1` version `1.0.0`. Its wide
+normalized table preserves nulls, and its compact vector table contains separate unweighted
+`color_core_v1`, `visual_character_v1` and optional `geometry_v1` families. Do not treat these
+families as a similarity profile or independently normalized OKLab a/b as perceptual geometry.
+
 Never overwrite source data. Never silently invent missing values.
 
 ## Primary bulk source

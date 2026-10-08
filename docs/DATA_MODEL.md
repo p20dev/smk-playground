@@ -61,6 +61,11 @@ bound to exact canonical/corpus SHA-256 values and extractor/schema versions.
 ### `normalized-features.parquet`
 One row per artwork per normalization profile/version, or a wide equivalent if simpler to query.
 
+Milestone 4 materializes the wide form as `artwork-normalized-features-v1.parquet`, with raw,
+robust-01, percentile and robust-z columns; `artwork-feature-vectors-v1.parquet` carries separate
+fixed-order candidate families. `normalization-profile-v1.json` is the authoritative definition
+and binds both outputs to the exact source-feature Parquet SHA-256.
+
 ### `quality-report.json`
 Corpus-wide counts, missingness, exclusions, warnings and distribution diagnostics.
 

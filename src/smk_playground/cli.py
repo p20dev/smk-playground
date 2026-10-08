@@ -46,5 +46,14 @@ def milestone3(root: Path | None = None) -> None:
     typer.echo(f"Milestone 3 complete: {summary['feature_rows']} feature rows")
 
 
+@app.command("milestone4")
+def milestone4(root: Path | None = None) -> None:
+    """Build corpus-relative normalized features and candidate feature families."""
+    from smk_playground.normalize.milestone4 import run
+
+    summary = run((root or Path.cwd()).resolve())
+    typer.echo(f"Milestone 4 complete: {summary['row_count']} normalized rows")
+
+
 if __name__ == "__main__":
     app()

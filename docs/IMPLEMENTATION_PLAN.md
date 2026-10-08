@@ -60,22 +60,12 @@ Implemented for frozen `smk-public-visual-v1`:
 Status: complete. Raw features remain corpus-independent; no corpus normalization or similarity is
 implemented. See `FEATURE_EXTRACTION_V1.md` and `FEATURE_EXAMPLES.md`.
 
-## Milestone 4 — Quality layer
+## Milestone 4 — Corpus statistics + normalization
 
-Implement documented flags and source/language/aspect checks.
-
-Produce `quality-report.json` with:
-
-- DA/EN raw record counts
-- unique IDs and language overlap
-- public-domain count
-- usable-image/visual count
-- valid feature count
-- null counts by feature
-- flag counts
-- parser warnings/errors
-- palette-size distribution
-- obvious extreme values
+Status: complete. Profile every candidate scalar over frozen `smk-public-visual-v1`, preserve raw
+OKLab semantics and missingness, generate robust-01/midrank-percentile/robust-z variants, add log
+aspect and circular-hue diagnostics, and publish separate unweighted candidate families. See
+`NORMALIZATION_V1.md` and `FEATURE_VECTOR_V1.md`.
 
 ## Milestone 5 — Pilot build
 
@@ -83,18 +73,10 @@ Run 100–500 representative artworks.
 
 Review distributions and manually inspect selected records. Fix parser/source/math errors only; do not artistically tune features.
 
-## Milestone 6 — Corpus-relative normalization
+## Milestone 6 — Similarity preparation
 
-Use the frozen `smk-public-visual-v1` entity membership from Milestone 2. Do not redefine corpus
-membership from an expected count.
-
-- reference included/excluded counts and reasons from the frozen corpus artifact
-- compute count/null/min/max/quantiles
-- median + MAD
-- implement `robust_01`
-- implement `percentile_01`
-- implement robust z-score
-- freeze profile with source-manifest reference
+Review Milestone 4 correlations and feature families, then define separately versioned distance
+profiles and weights. Do not reinterpret normalized OKLab axes as perceptual OKLab geometry.
 
 ## Milestone 7 — Full dataset build
 

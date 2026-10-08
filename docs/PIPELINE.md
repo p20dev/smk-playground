@@ -78,6 +78,13 @@ analytical weights, convert sRGB to OKLab/OKLCH, calculate compact palette stati
 visual values and derive eligible geometry. Emit scalar feature and long-form palette Parquets plus
 diagnostics. Do not perform corpus-relative normalization or similarity here.
 
+## Stage 4 — versioned corpus normalization
+
+Profile all candidate scalars over the frozen 27,254-row corpus, freeze P01/P99, median and MAD,
+and emit raw plus robust-01, empirical-midrank percentile and robust-z representations. Derive log
+aspect ratios and circular hue diagnostics, preserve nulls, and publish separate unweighted color,
+visual-character and optional geometry families. Similarity and final weights remain later stages.
+
 ## Ingest performance rule
 
 The source files are large. Use bounded-memory streaming where practical. A one-time conversion to Parquet/Arrow as an interim representation is encouraged if it simplifies all later stages.

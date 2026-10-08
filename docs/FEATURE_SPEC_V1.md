@@ -167,3 +167,10 @@ Initial quality-flag vocabulary may include:
 - `SOURCE_LANGUAGE_MISMATCH`
 
 Flags describe observations; they should not automatically exclude records unless a named downstream profile says so.
+
+## Corpus-relative derivatives
+
+Normalization is specified separately in `NORMALIZATION_V1.md`. Raw OKLab coordinates remain the
+perceptual source of truth; normalized a/b variants do not preserve OKLab Euclidean distance.
+Circular hue x/y are alternative interpretation fields and are not combined with a/b in the
+primary color family.
