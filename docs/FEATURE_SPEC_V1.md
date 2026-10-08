@@ -22,6 +22,9 @@ For `colors_palette_weighted_s`, the observed format may contain repeated space-
 Uniform v1 weights are `palette_weighting = "uniform"`, never original SMK weights. Future
 enrichment weights must retain separate provenance.
 
+Milestone 6 implements those enrichment weights in separately versioned palette schema v1 and
+feature schema v2. The uniform bulk feature v1 definition in this document remains unchanged.
+
 Canonical weights must satisfy approximately:
 
 ```text

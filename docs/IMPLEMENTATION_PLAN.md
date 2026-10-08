@@ -76,8 +76,10 @@ contributions. QA examples, stability diagnostics and performance measurements a
 
 ## Milestone 6 — Similarity preparation
 
-Review Milestone 4 correlations and feature families, then define separately versioned distance
-profiles and weights. Do not reinterpret normalized OKLab axes as perceptual OKLab geometry.
+Status: enrichment-backed weighted color layer implemented separately from bulk v1. It provides a
+resumable append-only source cache, weighted palettes/features v2, bulk/enrichment diagnostics and
+an exact palette-transport similarity profile. See `ENRICHMENT_V1.md`, `WEIGHTED_PALETTES_V1.md`
+and `WEIGHTED_SIMILARITY_V1.md`.
 
 ## Milestone 7 — Full dataset build
 

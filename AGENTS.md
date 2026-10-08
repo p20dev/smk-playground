@@ -45,6 +45,10 @@ geometry. Keep their questions separate, return component contributions, omit an
 missing optional components symmetrically, and tie-break by distance then canonical entity ID.
 Do not call distance a percentage similarity or add ANN before measured need.
 
+Milestone 6 keeps enrichment as a separate append-only source/cache. Weighted palette/features v2
+must never overwrite bulk uniform v1. Corpus membership remains unchanged when enrichment is
+missing. Palette transport uses exact OKLab min-cost flow, and weighted similarity is a new profile.
+
 Never overwrite source data. Never silently invent missing values.
 
 ## Primary bulk source

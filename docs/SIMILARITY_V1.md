@@ -100,3 +100,6 @@ smk similar --id 1170000000_object --profile visual --limit 10
 Ambiguous object numbers produce an error and list canonical IDs; they are never silently
 collapsed. `--include-self` is available for debugging and yields distance zero.
 
+Milestone 6 adds `weighted-color-similarity-v1` in a separate v2 profile set. It does not alter
+the scales, weights or outputs documented here; see `WEIGHTED_SIMILARITY_V1.md`.
+

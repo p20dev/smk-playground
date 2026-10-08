@@ -92,6 +92,13 @@ visual-character and geometry profiles, and perform exact full-corpus ranking wi
 contributions. Missing optional fields renormalize shared weights; required fields determine
 eligibility. No ANN index, universal score or palette transport is introduced.
 
+## Stage 6 — enrichment-backed weighted color
+
+Fetch only unique frozen-corpus object numbers into an append-only resumable cache, freeze a
+separate source manifest, parse repeated palette tokens into explicit weights, emit weighted
+palette/features v2, and add exact OKLab palette transport under a new similarity profile. Existing
+bulk v1 corpus, features, normalization and profiles remain byte-independent inputs.
+
 ## Ingest performance rule
 
 The source files are large. Use bounded-memory streaming where practical. A one-time conversion to Parquet/Arrow as an interim representation is encouraged if it simplifies all later stages.

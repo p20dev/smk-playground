@@ -121,12 +121,14 @@ See:
 
 ## Current status
 
-Milestones 0–5 complete: source structure and audits are manifested, the language snapshots have
+Milestones 0–6 complete: source structure and audits are manifested, the language snapshots have
 bounded-memory source Parquets, DA/EN rows are paired into stable SMK entities, and the exact
 `smk-public-visual-v1` membership rule is frozen. Deterministic raw visual features and analytical
 palettes now exist. Versioned corpus statistics, normalized scalar features and three unweighted
 candidate feature families are materialized. Three deterministic, explainable exact-distance
 profiles now support color, visual-character and specialist geometry queries; ANN is not used.
+Separately cached SMK enrichment responses add weighted palettes, v2 weighted features and an
+exact palette-transport similarity profile without mutating the bulk-derived v1 artifacts.
 
 Audit results are documented in:
 
@@ -143,6 +145,9 @@ Audit results are documented in:
 - [`docs/FEATURE_VECTOR_V1.md`](docs/FEATURE_VECTOR_V1.md)
 - [`docs/SIMILARITY_V1.md`](docs/SIMILARITY_V1.md)
 - [`docs/SIMILARITY_EXAMPLES.md`](docs/SIMILARITY_EXAMPLES.md)
+- [`docs/ENRICHMENT_V1.md`](docs/ENRICHMENT_V1.md)
+- [`docs/WEIGHTED_PALETTES_V1.md`](docs/WEIGHTED_PALETTES_V1.md)
+- [`docs/WEIGHTED_SIMILARITY_V1.md`](docs/WEIGHTED_SIMILARITY_V1.md)
 
 Run the audited ingest with:
 
@@ -153,4 +158,6 @@ smk milestone3
 smk milestone4
 smk milestone5
 smk similar KMS8892 --profile color --limit 10
+smk enrichment status
+smk similar KMS8892 --profile weighted-color --limit 10
 ```

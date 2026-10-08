@@ -72,6 +72,13 @@ Defines exact transforms, sampled-pair scales, weights, required/optional inputs
 tie-breaking and bound input hashes for the three Milestone 5 profiles. Similarity results are
 computed exactly on demand and expose per-component contributions; there is no full pair matrix.
 
+### Enrichment-backed weighted layer
+
+`enrichment-source-manifest-v1.json` freezes separately cached object-number responses.
+`artwork-weighted-palettes-v1.parquet` stores token-frequency weights, and
+`artwork-visual-features-v2.parquet` stores weighted derivatives plus availability/status for every
+base-corpus entity. These additive artifacts never redefine `smk-public-visual-v1` or overwrite v1.
+
 ### `quality-report.json`
 Corpus-wide counts, missingness, exclusions, warnings and distribution diagnostics.
 
